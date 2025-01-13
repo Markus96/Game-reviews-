@@ -1,0 +1,25 @@
+# index.html
+"""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Game Reviews</title>
+</head>
+<body>
+<div class="container">
+    <h1>Game Reviews</h1>
+    <a href="/add_game"><button>Add a New Game</button></a>
+    <ul>
+        {% for game in games %}
+        <li>
+            <a href="/game/{{ game.id }}">{{ game.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
+"""
