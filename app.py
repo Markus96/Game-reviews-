@@ -28,12 +28,20 @@ conn = mongo_connect(MONGO_URI)
 coll = conn[DATABASE][COLLECTION]
 
 # Route to show game reviews
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    # Fetch all documents (game reviews) from the collection
-    documents = coll.find()
+    search_query = request.args.get('search', '')  # Get the search query from the URL
+    if search_query:
+        # Search for reviews with a game title matching the search query (case-insensitive)
+        documents = coll.find({
+            'game': {'$regex': search_query, '$options': 'i'}  # $options: 'i' for case-insensitive
+        })
+    else:
+        # If no search query, fetch all reviews
+        documents = coll.find()
+
     reviews = [doc for doc in documents]  # Convert cursor to list
-    return render_template('index.html', reviews=reviews)
+    return render_template('index.html', reviews=reviews, search_query=search_query)
 
 # Route to handle form submission for adding new reviews
 @app.route('/add', methods=['GET', 'POST'])

@@ -8,6 +8,14 @@
 </head>
 <body>
     <h1>Game Reviews</h1>
+
+    <!-- Search form -->
+    <form action="{{ url_for('index') }}" method="GET">
+        <label for="search">Search by Game Title:</label>
+        <input type="text" id="search" name="search" placeholder="Enter game title" value="{{ search_query }}">
+        <input type="submit" value="Search">
+    </form>
+
     <div>
         <a href="{{ url_for('add_review') }}">Add a New Review</a>
         {% if reviews %}
@@ -21,9 +29,8 @@
             {% endfor %}
             </ul>
         {% else %}
-            <p>No reviews available.</p>
+            <p>No reviews found.</p>
         {% endif %}
     </div>
 </body>
 </html>
-
