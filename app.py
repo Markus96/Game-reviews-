@@ -1,69 +1,63 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+import os
+import pymongo
+from flask import Flask, render_template, request, redirect, url_for
 
+# Load environment variables if available
+if os.path.exists("env.py"):
+    import env
+
+# MongoDB URI and Database setup
+MONGO_URI = os.environ.get("MONGO_URI")
+DATABASE = "test"
+COLLECTION = "reviews"
+
+# Initialize Flask app
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///reviews.db'
-app.config['SECRET_KEY'] = 'your_secret_key'
-db = SQLAlchemy(app)
 
-class Game(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.Text, nullable=False)
-    reviews = db.relationship('Review', backref='game', lazy=True)
+# MongoDB connection function
+def mongo_connect(URL):
+    try:
+        conn = pymongo.MongoClient(URL)
+        print("Mongo is connected")
+        return conn
+    except pymongo.errors.ConnectionFailure as e:
+        print("Could not connect to MongoDB: %s" % e)
 
-class Review(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(50), nullable=False)
-    rating = db.Column(db.Integer, nullable=False)
-    comment = db.Column(db.Text, nullable=False)
-    date_posted = db.Column(db.DateTime, default=datetime.utcnow)
-    game_id = db.Column(db.Integer, db.ForeignKey('game.id'), nullable=False)
+# Connect to MongoDB
+conn = mongo_connect(MONGO_URI)
+coll = conn[DATABASE][COLLECTION]
 
+# Route to show game reviews
 @app.route('/')
 def index():
-    games = Game.query.all()
-    return render_template('index.html', games=games)
+    # Fetch all documents (game reviews) from the collection
+    documents = coll.find()
+    reviews = [doc for doc in documents]  # Convert cursor to list
+    return render_template('index.html', reviews=reviews)
 
-@app.route('/game/<int:game_id>')
-def game_detail(game_id):
-    game = Game.query.get_or_404(game_id)
-    return render_template('game_detail.html', game=game)
-
-@app.route('/add_game', methods=['GET', 'POST'])
-def add_game():
+# Route to handle form submission for adding new reviews
+@app.route('/add', methods=['GET', 'POST'])
+def add_review():
     if request.method == 'POST':
-        title = request.form['title']
-        description = request.form['description']
-        new_game = Game(title=title, description=description)
-        try:
-            db.session.add(new_game)
-            db.session.commit()
-            flash('Game added successfully!', 'success')
-            return redirect(url_for('index'))
-        except:
-            flash('Error adding game. Please try again.', 'danger')
-    return render_template('add_game.html')
+        # Get form data
+        game = request.form.get('game')
+        review = request.form.get('review')
+        rating = request.form.get('rating')
 
-@app.route('/add_review/<int:game_id>', methods=['GET', 'POST'])
-def add_review(game_id):
-    game = Game.query.get_or_404(game_id)
-    if request.method == 'POST':
-        username = request.form['username']
-        rating = request.form['rating']
-        comment = request.form['comment']
-        new_review = Review(username=username, rating=rating, comment=comment, game=game)
-        try:
-            db.session.add(new_review)
-            db.session.commit()
-            flash('Review added successfully!', 'success')
-            return redirect(url_for('game_detail', game_id=game_id))
-        except:
-            flash('Error adding review. Please try again.', 'danger')
-    return render_template('add_review.html', game=game)
+        # Create a new review document with correct fields
+        new_review = {
+            'game': game,      # Use 'game' instead of 'title'
+            'review': review,  # Use 'review' instead of 'comment'
+            'rating': rating   # Use 'rating' as is
+        }
+
+        # Insert the new review into the MongoDB collection
+        coll.insert_one(new_review)
+
+        # Redirect back to the home page
+        return redirect(url_for('index'))
+
+    return render_template('add_review.html')
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
