@@ -1,5 +1,6 @@
 import os
 import pymongo
+from bson import ObjectId  # Import ObjectId from bson
 from flask import Flask, render_template, request, redirect, url_for
 
 # Load environment variables if available
@@ -28,18 +29,14 @@ conn = mongo_connect(MONGO_URI)
 coll = conn[DATABASE][COLLECTION]
 
 # Route to show game reviews
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    search_query = request.args.get('search', '')  # Get the search query from the URL
+    search_query = request.args.get('search', '')
     if search_query:
-        # Search for reviews with a game title matching the search query (case-insensitive)
-        documents = coll.find({
-            'game': {'$regex': search_query, '$options': 'i'}  # $options: 'i' for case-insensitive
-        })
+        documents = coll.find({'title': {'$regex': search_query, '$options': 'i'}})  # Case-insensitive search
     else:
-        # If no search query, fetch all reviews
         documents = coll.find()
-
+    
     reviews = [doc for doc in documents]  # Convert cursor to list
     return render_template('index.html', reviews=reviews, search_query=search_query)
 
@@ -47,25 +44,51 @@ def index():
 @app.route('/add', methods=['GET', 'POST'])
 def add_review():
     if request.method == 'POST':
-        # Get form data
         game = request.form.get('game')
         review = request.form.get('review')
         rating = request.form.get('rating')
 
-        # Create a new review document with correct fields
         new_review = {
-            'game': game,      # Use 'game' instead of 'title'
-            'review': review,  # Use 'review' instead of 'comment'
-            'rating': rating   # Use 'rating' as is
+            'game': game,
+            'review': review,
+            'rating': rating
         }
 
-        # Insert the new review into the MongoDB collection
         coll.insert_one(new_review)
 
-        # Redirect back to the home page
         return redirect(url_for('index'))
 
     return render_template('add_review.html')
+
+# Route to handle editing a review
+@app.route('/edit/<review_id>', methods=['GET', 'POST'])
+def edit_review(review_id):
+    review = coll.find_one({'_id': ObjectId(review_id)})  # Use ObjectId for querying
+    if not review:
+        return redirect(url_for('index'))
+    
+    if request.method == 'POST':
+        title = request.form.get('game')
+        comment = request.form.get('review')
+        rating = request.form.get('rating')
+
+        updated_review = {
+            'game': title,
+            'review': review,
+            'rating': rating
+        }
+        
+        coll.update_one({'_id': ObjectId(review_id)}, {'$set': updated_review})  # Use ObjectId for updating
+
+        return redirect(url_for('index'))
+
+    return render_template('edit_review.html', review=review)
+
+# Route to handle deleting a review
+@app.route('/delete/<review_id>', methods=['GET'])
+def delete_review(review_id):
+    coll.delete_one({'_id': ObjectId(review_id)})  # Use ObjectId for deletion
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
