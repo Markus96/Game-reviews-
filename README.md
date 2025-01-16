@@ -100,7 +100,7 @@ Most existing review platforms are either cluttered with excessive features or l
 
 ![alt text](<static/images/Gamereview hub screenshot Add review final.png>)
 ![alt text](<static/images/Gamereview hub screenshot Add review Mock up.png>)
-
+### Edit Review
 ![alt text](<static/images/Gamereview hub screenshot Edit review final.png>)
 ![alt text](<static/images/Gamereview hub screenshot Edit review Mock up.png>)
 
