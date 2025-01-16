@@ -88,8 +88,8 @@ Most existing review platforms are either cluttered with excessive features or l
 
 ### Homepage
 
-![alt text](<images/Gamereview hub screenshot index Final.png>)
-![alt text](<images/Gamereview hub screenshot index Mock up.png>)
+![alt text](<static/images/Gamereview hub screenshot index Final.png>)
+![alt text](<static/images/Gamereview hub screenshot index Mock up.png>)
 
 
 - A welcoming and clean layout showcasing the latest game reviews.
@@ -98,11 +98,11 @@ Most existing review platforms are either cluttered with excessive features or l
 
 ### Add/Edit/Delete Reviews
 
-![alt text](<images/Gamereview hub screenshot Add review final.png>)
-![alt text](<images/Gamereview hub screenshot Add review Mock up.png>)
+![alt text](<static/images/Gamereview hub screenshot Add review final.png>)
+![alt text](<static/images/Gamereview hub screenshot Add review Mock up.png>)
 
-![alt text](<images/Gamereview hub screenshot Edit review final.png>)
-![alt text](<images/Gamereview hub screenshot Edit review Mock up.png>)
+![alt text](<static/images/Gamereview hub screenshot Edit review final.png>)
+![alt text](<static/images/Gamereview hub screenshot Edit review Mock up.png>)
 
 - **Add Review**: A form with fields for game title, genre, rating, and review text.  
 - **Edit Review**: Pre-filled forms allow users to update their submissions seamlessly.  
