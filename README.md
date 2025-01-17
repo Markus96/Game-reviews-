@@ -219,15 +219,29 @@ The "Edit" page in the mock-up featured a media upload option, which hasn’t be
 
 ## Testing and Validation
 
-### Manual Testing
-
-- Tested all functionalities (add, edit, delete, and view reviews) on multiple browsers, including Google Chrome, Firefox, and Microsoft Edge.
-
 ### Validation
 
 - **HTML/CSS**: Validated with W3C tools.  
 - **Python**: Code reviewed using **PyLint** for adherence to coding standards.  
 - **Database**: MongoDB queries tested to ensure proper storage and retrieval.
+
+
+![CSS Validation](<static/images/CSS validator.png>)
+
+
+
+## Functional Testing
+
+|Function|On platform|Works good| Fails|
+|--------|-----------|----------|------|
+
+|| browsers * |Yes |      |
+|Search for reviews |browsers *|Yes|      |
+|Add reviews |browsers *|Yes|      |
+|Edit reviews |browsers *|Yes|      |
+|Delete reviews |browsers *|Yes|      |
+|X|browsers *|Yes||
+Browsers *: Google Chrome, Oprah, Firefox, Microsoft Edge.
 
 ---
 
@@ -251,7 +265,7 @@ I chose Railway to deploy my Flask app instead of Heroku because it offers sever
 
 Overall, Railway's simplicity, better free tier, and faster performance made it the ideal choice for hosting my project.
 
-Live site adress: [Game Review Hub](https://markus96.github.io/index.html)
+Live site adress: [Game Review Hub](gamereviewhub.co.uk)
 
 
 ---
