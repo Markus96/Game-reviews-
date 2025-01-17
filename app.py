@@ -15,6 +15,10 @@ COLLECTION = "reviews"
 # Initialize Flask app
 app = Flask(__name__)
 
+# Set up static and template folders
+app.static_folder = 'static'
+app.template_folder = 'templates'
+
 # MongoDB connection function
 def mongo_connect(URL):
     try:
@@ -69,12 +73,12 @@ def edit_review(review_id):
     
     if request.method == 'POST':
         game = request.form.get('game')
-        review_text = request.form.get('review')
+        comment = request.form.get('review')
         rating = request.form.get('rating')
 
         updated_review = {
             'game': game,
-            'review': review_text,
+            'review': comment,
             'rating': rating
         }
         
