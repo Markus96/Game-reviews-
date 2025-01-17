@@ -34,12 +34,32 @@ h1 img {
 }
 
 /* Review box styling */
+ul {
+    list-style-type: none; /* Removes default bullet points */
+    padding: 0;
+}
+
 li {
     background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent to show the background image behind */
     border-radius: 15px; /* Curved corners */
     padding: 30px;
     margin: 20px 0;
     box-shadow: 0 0 10px rgba(83, 51, 51, 0.1); /* Slight shadow for depth */
+    border: 1px solid #6d3333; /* Border around each review */
+}
+
+li .game-title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+li .game-rating {
+    color: #FFD700; /* Gold color for rating */
+    font-size: 1.2em;
+}
+
+li .review-text {
+    font-size: 1.1em;
 }
 
 /* Form styling */

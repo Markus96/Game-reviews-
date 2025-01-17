@@ -3,43 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Reviews Hub</title>
-    <link rel="stylesheet" href="/static/styles.css">
-    <link rel="stylesheet" href="/static/styles.css">
+    <title>Game Reviews</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
 <body>
-    <header>
-        <h1><img src="/static/images/Logo.jpg" alt="Site Logo"> Game Reviews Hub</h1>
-    </header>
-    
-    <section>
-        <h2>Search by Game Title:</h2>
-        <form action="/" method="get">
-            <input type="text" name="search" value="{{ search_query }}" placeholder="Enter game title">
-            <button type="submit">Search</button>
-        </form>
-    </section>
-    
-    <section>
-        <h2>Add a New Review</h2>
-        <a href="{{ url_for('add_review_route') }}">Add a Review</a>
-    </section>
+    <h1>Game Reviews</h1>
 
-    <section>
-        <h2>Reviews</h2>
+    <!-- Link to Add a New Review -->
+    <div>
+        <a href="{{ url_for('add_review_route') }}">Add a New Review</a>
+    </div>
+
+    <!-- Display Game Reviews -->
+    <div>
         {% if reviews %}
-            {% for review in reviews %}
-                <div>
-                    <p><strong>Game:</strong> {{ review.game }}</p>
-                    <p><strong>Review:</strong> {{ review.review }}</p>
-                    <p><strong>Rating:</strong> {{ review.rating }}</p>
-                    <a href="{{ url_for('edit_review_route', review_id=review['_id']) }}">Edit</a> |
-                    <a href="{{ url_for('delete_review_route', review_id=review['_id']) }}">Delete</a>
-                </div>
-                <hr>
-            {% endfor %}
+            <ul>
+                {% for review in reviews %}
+                    <li>
+                        <strong>Game Title:</strong> {{ review.title }}<br>
+                        <em>Reviewed by:</em> {{ review.reviewer }}<br>
+                        <p><strong>Comment:</strong> {{ review.comment }}</p>
+                        <strong>Rating:</strong> {{ review.rating }}<br>
+                    </li>
+                {% endfor %}
+            </ul>
         {% else %}
-            <p>No reviews found.</p>
+            <p>No reviews available.</p>
         {% endif %}
-    </section>
+    </div>
 </body>
 </html>
