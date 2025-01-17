@@ -108,5 +108,7 @@ def delete_review_route(review_id):
     delete_review(review_id)  # Use the delete_review function from mongo.py
     return redirect(url_for('index'))
 
+# Ensure the app only runs if it's being executed as the main module (not imported)
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)  # Set debug=False in production
+
