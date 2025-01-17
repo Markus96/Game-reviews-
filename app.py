@@ -22,7 +22,7 @@ def mongo_connect(URL):
         print("Mongo is connected")
         return conn
     except pymongo.errors.ConnectionFailure as e:
-        print("Could not connect to MongoDB: %s" % e)
+        print(f"Could not connect to MongoDB: {e}")
 
 # Connect to MongoDB
 conn = mongo_connect(MONGO_URI)

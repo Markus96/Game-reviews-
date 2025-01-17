@@ -106,3 +106,36 @@ a {
     margin-top: 20px;
     display: inline-block;
 }
+
+/* Round Box around the review content in the delete confirmation section */
+section div {
+    background-color: white;
+    border-radius: 15px;  /* Rounded corners */
+    padding: 20px;  /* Adds padding inside the box */
+    margin: 20px auto;  /* Centers the box and adds margin around */
+    width: 80%;  /* Limits the width */
+    max-width: 600px;  /* Optional, limits max width */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  /* Adds subtle shadow */
+}
+
+/* Style for the section heading (Delete confirmation) */
+section h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Style for the review title */
+section h3 {
+    font-size: 22px;
+    color: #2b2929;
+    margin-bottom: 10px;  /* Adds space below the game title */
+}
+
+/* Style for review content */
+section p {
+    font-size: 16px;
+    color: #2b2929;
+    margin-bottom: 10px;  /* Adds space below the review content */
+}
