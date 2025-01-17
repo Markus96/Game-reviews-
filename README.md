@@ -331,3 +331,4 @@ In the future, updates will further improve the platform by introducing **user a
   - **Deployment**: deployed to railway [Railway](https://railway.com/). 
 - **Backend Logic**: Tutorials from [Flask Documentation](https://flask.palletsprojects.com/).  
 - **Database Setup**: MongoDB guides from [MongoDB Documentation](https://www.mongodb.com/docs/). 
+- Photos from Pixabay: MongoDB guides from [Pixalbay](https://pixabay.com/images/search/loyalty/). 

@@ -1,4 +1,42 @@
+# Ignore Python bytecode files
 *.pyc
+*.pyo
 __pycache__/
-env/
-*.env
+
+# Ignore virtual environment directories
+venv/
+.env/
+
+# Ignore environment configuration files that may contain sensitive information
+.env
+
+# Ignore any log files or directories
+*.log
+logs/
+
+# Ignore database files
+*.sqlite3
+db.sqlite3
+
+# Ignore system files
+.DS_Store
+
+# Ignore coverage and testing directories
+.coverage
+*.cover
+nosetests.xml
+coverage.xml
+*.hypothesis/
+
+# Ignore build directories (for deployment, e.g., Heroku)
+build/
+dist/
+*.egg-info/
+
+# Ignore editor-specific files
+.idea/
+.vscode/
+
+# Ignore secrets and configuration files with sensitive data
+config.ini
+secrets.yaml
