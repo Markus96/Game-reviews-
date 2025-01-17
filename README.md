@@ -265,7 +265,7 @@ I chose Railway to deploy my Flask app instead of Heroku because it offers sever
 
 Overall, Railway's simplicity, better free tier, and faster performance made it the ideal choice for hosting my project.
 
-Live site adress: [Game Review Hub](gamereviewhub.co.uk)
+Live site adress: [Game Review Hub](www.gamereviewhub.co.uk)
 
 
 ---

@@ -49,7 +49,7 @@ def add_review():
         new_review = {
             'game': title,  # Use the correct variable 'title'
             'review': review,
-            'rating': rating
+            'rating': rating,
         }
 
         # Insert the new review into the MongoDB collection
