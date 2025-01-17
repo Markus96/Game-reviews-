@@ -33,7 +33,7 @@ coll = conn[DATABASE][COLLECTION]
 def index():
     search_query = request.args.get('search', '')
     if search_query:
-        documents = coll.find({'title': {'$regex': search_query, '$options': 'i'}})  # Case-insensitive search
+        documents = coll.find({'game': {'$regex': search_query, '$options': 'i'}})  # Case-insensitive search
     else:
         documents = coll.find()
     
@@ -68,13 +68,13 @@ def edit_review(review_id):
         return redirect(url_for('index'))
     
     if request.method == 'POST':
-        title = request.form.get('game')
-        comment = request.form.get('review')
+        game = request.form.get('game')
+        review_text = request.form.get('review')
         rating = request.form.get('rating')
 
         updated_review = {
-            'game': title,
-            'review': review,
+            'game': game,
+            'review': review_text,
             'rating': rating
         }
         

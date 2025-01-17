@@ -60,6 +60,19 @@ Most existing review platforms are either cluttered with excessive features or l
 
 ---
 
+## Scope and Limitations
+
+### Scope
+
+Develop a user-friendly platform for creating, editing, deleting, and browsing game reviews.  
+
+### Limitations
+
+1. **Content Moderation**:  
+   The platform currently does not include advanced moderation features like profanity filters.  
+2. **Authentication**:  
+   The initial version does not require user accounts, which limits personalized features.
+
 ## Development Highlights
 
 ### Features
@@ -167,20 +180,9 @@ The mock-up anticipated full responsiveness, but on mobile devices, the "Edit" p
 ### 6. **Additional Features**  
 The "Edit" page in the mock-up featured a media upload option, which hasn’t been implemented in the live version. The live version is limited to text-based input only, which may need to be revisited in future updates to match the mock-up’s vision.
 
----
+### Delete review pop up
 
-## Scope and Limitations
-
-### Scope
-
-Develop a user-friendly platform for creating, editing, deleting, and browsing game reviews.  
-
-### Limitations
-
-1. **Content Moderation**:  
-   The platform currently does not include advanced moderation features like profanity filters.  
-2. **Authentication**:  
-   The initial version does not require user accounts, which limits personalized features.
+"A pop-up window is used when deleting a review to prevent accidental deletions and ensure users have a chance to confirm their action. This added layer of confirmation helps improve the user experience by reducing errors and promoting careful decision-making, especially when permanent changes like deletion are involved."
 
 ---
 
@@ -193,6 +195,7 @@ Develop a user-friendly platform for creating, editing, deleting, and browsing g
 ---
 
 ## Bugs and Fixes
+
 
 ### Key Issues
 
@@ -248,14 +251,64 @@ I chose Railway to deploy my Flask app instead of Heroku because it offers sever
 
 Overall, Railway's simplicity, better free tier, and faster performance made it the ideal choice for hosting my project.
 
+Live site adress: [Game Review Hub](https://markus96.github.io/index.html)
+
 
 ---
 
 ## Conclusion
 
-**Game Reviews Hub** successfully simplifies the process of sharing and managing game reviews. Its straightforward interface and core functionalities provide a solid foundation for building a community of engaged gamers.  
+# Game Reviews Hub: Platform Overview and Features
 
-Future updates will focus on adding user accounts, advanced search features, and enhanced moderation to further improve the platform.
+**Game Reviews Hub** successfully simplifies the process of sharing and managing game reviews. Its straightforward interface and core functionalities, showcased through the **index**, **add review**, **edit review**, and **delete pop-up** pages, provide a solid foundation for building a community of engaged gamers. Let's explore how each of these elements contributes to the platform’s user experience.
+
+## Index Page: Streamlined Navigation for Easy Browsing
+
+The **index page** mock-up offers a clean and intuitive layout where users can easily navigate through reviews. By focusing on minimal design and clear categorization, the page ensures that users can quickly browse through various games and reviews. The layout incorporates essential features such as:
+
+- **Search bar and filters** for narrowing down reviews based on game titles, genres, or ratings, ensuring users can find the most relevant content to them.
+- **Highlighted reviews** or a "featured" section, drawing attention to popular or top-rated games, encouraging community interaction and engagement.
+
+This mock-up reflects the platform’s goal of creating a space that is both engaging and easy to use, inviting users to explore new content with minimal effort.
+
+## Add Review Page: Simplified Submission Process
+
+The **add review** page mock-up focuses on creating a frictionless process for users to submit their reviews. The layout is designed to be straightforward, with clearly defined fields and options for adding game titles, ratings, and written reviews. Key aspects include:
+
+- **Rating system** that allows users to assign scores to different aspects of the game (e.g., gameplay, graphics, sound), offering a structured way to express opinions.
+- **Text input field** for detailed written reviews, encouraging users to elaborate on their experiences and share valuable insights with the community.
+- **User-friendly interface** with simple buttons and prompts that ensure the process is quick and easy, making it more likely for users to contribute their thoughts without feeling overwhelmed.
+
+This mock-up reinforces the platform's focus on ease of use, making the review submission process as simple and accessible as possible, which is essential for fostering an active and growing community.
+
+## Edit Review Page: Empowering Users with Control
+
+The **edit review** page mock-up empowers users by allowing them to modify their reviews after submission. This feature ensures that users can update their content based on new experiences or changing opinions. The mock-up includes:
+
+- **Editable fields** for both the game rating and written review, ensuring users can update both easily.
+- **Clear save and cancel options**, so users feel confident in their decisions and can quickly revert to the original version if necessary.
+- **Version history** or revision log (potential future feature), so users can track changes to their reviews and maintain transparency.
+
+This mock-up demonstrates the platform’s commitment to giving users control over their content, allowing them to express themselves more freely and update reviews as their understanding of the game evolves.
+
+## Delete Pop-up: Confirmation to Prevent Accidental Deletion
+
+The **delete pop-up** mock-up serves an essential function: preventing accidental deletions of reviews. When a user chooses to delete a review, a confirmation pop-up appears, ensuring they are fully aware of the action. The key features of this pop-up include:
+
+- **Clear warning message** that explains the action being taken (e.g., "Are you sure you want to delete this review? This action cannot be undone.").
+- **Confirmation buttons**: One for confirming the deletion and another to cancel the action, giving the user the option to reconsider and avoid mistakes.
+- **Visual cues** (such as color changes or icons) to clearly indicate the severity of the action, reducing the chances of accidental clicks.
+
+This feature is crucial for user satisfaction and trust, as it ensures users don’t lose valuable content without being fully aware of the consequences. It’s a simple yet powerful design choice that enhances the platform’s usability and safeguards user-generated content.
+
+## Conclusion: Building a Strong Foundation for the Future
+
+Together, these mock-ups highlight **Game Reviews Hub**'s commitment to creating a user-centric platform that encourages engagement, fosters a sense of community, and prioritizes ease of use. The simplicity of the interface combined with clear functionalities ensures that users can quickly and effectively interact with the platform, whether they are browsing reviews, submitting their own, or editing their contributions.
+
+In the future, updates will further improve the platform by introducing **user accounts**, allowing gamers to have personalized profiles and track their review history. **Advanced search features** will make it even easier to find specific content based on detailed criteria, while **enhanced moderation tools** will help maintain a positive and respectful community environment.
+
+**Game Reviews Hub** has set a strong foundation, and these ongoing improvements will only enhance its capabilities, making it the go-to place for passionate gamers to share and discover reviews in a seamless, enjoyable way.
+
 
 ---
 
