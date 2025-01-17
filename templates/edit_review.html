@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1>
-        <img src="static/images/Logo.jpg" alt="Site Logo">
+        <!-- Use url_for to correctly reference static image -->
+        <img src="{{ url_for('static', filename='images/Logo.jpg') }}" alt="Site Logo">
         Game Reviews Hub
     </h1>
 
@@ -22,7 +23,7 @@
         <label for="rating">Rating (1-5):</label><br>
         <input type="number" id="rating" name="rating" min="1" max="5" required><br><br>
 
-        <input type="submit" value="Edit Review">
+        <input type="submit" value="Submit Review">
     </form>
 
     <br>
