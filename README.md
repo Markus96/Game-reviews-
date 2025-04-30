@@ -213,7 +213,7 @@ The **Review** table stores the individual reviews for each game, including the 
 ### Relationships:
 - A **Review** belongs to one **Game** (many-to-one relationship).
 
-![Database diagram](<static/images/Database diagram>)
+![Database diagram](<static/images/Database diagram.png>)
 
 ---
 
