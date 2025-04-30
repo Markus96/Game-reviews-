@@ -232,15 +232,19 @@ The "Edit" page in the mock-up featured a media upload option, which hasn’t be
 
 ## Functional Testing
 
+## Functional Testing
+
 |Function|On platform|Works good| Fails|
 |--------|-----------|----------|------|
-
-|| browsers * |Yes |      |
-|Search for reviews |browsers *|Yes|      |
-|Add reviews |browsers *|Yes|      |
-|Edit reviews |browsers *|Yes|      |
-|Delete reviews |browsers *|Yes|      |
+|Logotype to home|browsers *| Yes |      |
+|nav Home|browsers * |Yes|      |
+|nav Gallery| browsers * |Yes |      |
+|nav Contact |browsers *|Yes|      |
+|Wiki-link in tips on index |  browsers *|Yes |      |
+|<h4>The footer social-media links</h4>|
 |X|browsers *|Yes||
+|Instagram|browsers *|Yes||
+|Facebook|browsers *|Yes||
 Browsers *: Google Chrome, Oprah, Firefox, Microsoft Edge.
 
 ---
