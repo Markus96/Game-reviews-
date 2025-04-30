@@ -184,6 +184,37 @@ The "Edit" page in the mock-up featured a media upload option, which hasn’t be
 
 "A pop-up window is used when deleting a review to prevent accidental deletions and ensure users have a chance to confirm their action. This added layer of confirmation helps improve the user experience by reducing errors and promoting careful decision-making, especially when permanent changes like deletion are involved."
 
+# Database Tables
+
+## Game
+The **Game** table is used to store information about the games available for review on the website.
+
+### Fields:
+- `id` (Primary Key)
+- `title`
+- `description`
+
+### Relationships:
+- A **Game** can have many **Reviews** (one-to-many relationship).
+
+---
+
+## Review
+The **Review** table stores the individual reviews for each game, including the rating, username, and the comment.
+
+### Fields:
+- `id` (Primary Key)
+- `username`
+- `rating` (Rating between 1 and 5)
+- `comment`
+- `date_posted` (Date and time of the review)
+- `game_id` (Foreign Key to **Game** table)
+
+### Relationships:
+- A **Review** belongs to one **Game** (many-to-one relationship).
+
+![CSS Validation](<static/images/CSS validator.png>)
+
 ---
 
 ## Problem Statement
